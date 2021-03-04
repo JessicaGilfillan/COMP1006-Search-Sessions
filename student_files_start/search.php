@@ -9,7 +9,25 @@
             <div class="col">
             <!-- STEP ONE - display all risky job titles in a dynamic list   -->
             <?php
-            
+            //connect 
+            require('connect.php'); 
+            //set up our query 
+            $sql = "SELECT title FROM riskyjobs;";
+            //prepare 
+            $statement = $db->prepare($sql); 
+            //execute the query 
+            $statement->execute(); 
+            //fetchAll 
+            $search_results = $statement->fetchAll(); 
+            echo "<ul>"; 
+            //loop through results 
+            foreach($search_results as $result) {
+                echo "<li>" .$result['title']. "</li>"; 
+            }
+            echo "</ul>"; 
+            echo "</div>"; 
+            echo "</div>";
+            echo "</div>";
             ?>
 
         <h2> Search For Your New Career Here: </h2> 
