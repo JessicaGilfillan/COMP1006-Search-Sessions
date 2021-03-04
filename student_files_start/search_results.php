@@ -1,4 +1,5 @@
 <?php 
+    session_start(); 
     require('header.php');
     echo "<div class='container'>";
     // grab the search term and display results
@@ -6,6 +7,7 @@
     $submit = filter_input(INPUT_GET, 'submit'); 
     $name = filter_input(INPUT_GET, 'name'); 
     $search_term = filter_input(INPUT_GET, 'search'); 
+    $_SESSION['name'] = $name; 
 
     //connect to the db 
     require('connect.php'); 
@@ -36,6 +38,8 @@
     //close the db connect 
     $statement->closeCursor(); 
    
+    echo "<a href='moreinfo.php'> Click for More Info </a>"; 
+
     echo "</ul>"; 
     echo "</div>";
 ?>
